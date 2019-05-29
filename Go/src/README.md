@@ -1,18 +1,17 @@
-Installation: Install go
+Installation instructions:
+Follow these steps to get this Go workspace up and running.
 
 Setup:
 
-1. Set the GOPATH for this workspace
-    export GOPATH={workspace}/Go
+1. Follow the instruction to install Go - https://golang.org/doc/install
+
+2. Set the GOPATH for this workspace
+    export GOPATH={your_workspace}/Go
     export PATH=$PATH:$GOPATH/bin
     cd $GOPATH/src/main
-
-2. Build and install
+    
+3. Build and install
     go install
 
-3. Execution
+4. Execution
     go run main
-    
-
-
-
