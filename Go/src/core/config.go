@@ -13,7 +13,7 @@ const RiasVersion = "?version=2019-01-01&generation=1"
 const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
 
 // APIKey - api key
-const APIKey = "Your api key here"
+const APIKey = "Your API key here"
 
 // IAMEndpoint - prod
 const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"

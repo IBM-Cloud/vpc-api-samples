@@ -33,7 +33,6 @@ func RetrieveToken(apikey string) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("cache-control", "no-cache")
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
