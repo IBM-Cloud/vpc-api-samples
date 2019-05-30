@@ -98,20 +98,20 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
   IamToken = token.TokenType + " " + token.AccessToken
   ```
 
-  Now, you should have the token storeds in global variable `IamToken`. 
+  Now, you should have the token stored in global variable `IamToken`.
   Refer to the code [here.](https://github.com/IBM-Cloud/vpc-api-samples/blob/master/Go/src/core/token.go)
 
 3. Get a list of the resources.
 
   This section will show how to perform a GET API call on VPC APIs.
 
-  Create the URL to be used to make GET call.
+  Create the URL to be used to make GET rest API call.
 
   ```go
   url := RiasEndpoint + "/subnets" + RiasVersion
   ```
 
-  This URL will GET the list of subnets. Get other resources by using the appropriate endpoint.
+  This URL will get the list of subnets. Get other resources by using the appropriate endpoint.
 
   Create a new request given a method, above URL, and optional body.
 
@@ -125,7 +125,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
   req.Header.Add("Content-Type", "application/json")
   req.Header.Add("Accept", "application/json")
   req.Header.Add("Authorization", IamToken)
-    ```
+  ```
 
   Request server and read the response.
 
