@@ -365,4 +365,7 @@ except Exception as error:
 ```
 
 ## API Spec
-[RIAS APIs](https://pages.github.ibm.com/riaas/api-spec/spec_2019-05-28/)
+[IBM Cloud VPC API](https://cloud.ibm.com/apidocs/vpc-on-classic)
+
+## Documentation
+[IBM Cloud Virtual Private Cloud](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-getting-started)
