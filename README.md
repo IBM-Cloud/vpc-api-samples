@@ -1,14 +1,12 @@
 # Getting Started
 
-This repo is a variety of code snippets to be used by developers to interact with resources that belong to VPC on Classic IaaS Offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
+This repository consists of a variety of code snippets intended to aid developer interaction with resources belonging to VPC on classic laaS Offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
 
-These examples are provided in the following languages.
-
+Examples are provided in the following languages:
 1. [Go](#go)
 2. [Python](#python)
 
-These examples will walk you through the following steps.
-
+Examples show the following steps:
 1. Retrieve API key for your account.
 2. Get an IAM access token using your api key.
 3. Get a list of the resources.
@@ -39,7 +37,9 @@ These examples will walk you through the following steps.
 
 ## Go
 
-Following this section, you will be able to call VPC APIs in your Go workspace.
+This section displays the process to call VPC APIs in a Go workspace.
+
+
 
 1. Set up global/account variables.
   Set up following global variables in your workspace
@@ -51,6 +51,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
     const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
     const APIKey = "Your API key here"
     ```
+
 
 2. Get an IAM access token using your API key.
 
@@ -68,6 +69,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
 
       ```
 
+
       Make the payload.
 
       ```go
@@ -75,12 +77,14 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
       payload := strings.NewReader(strings.Join(payloadSlice, ""))
       ```
 
+      
       Make the request by passing the required endpoint and payload.
 
       ```go
         req, err := http.NewRequest("POST", IAMEndpoint, payload)
       ```
 
+      
       Set the headers.
 
       ```go
@@ -88,6 +92,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
       req.Header.Add("Accept", "application/json")
       ```
 
+      
       Request server and unmarshall the body in the `Token` type struct. Set the global variable.
 
       ```go
@@ -98,26 +103,29 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
       IamToken = token.TokenType + " " + token.AccessToken
       ```
 
+    
       Now, you should have the token stored in global variable `IamToken`.
       Refer to the code [here.](https://github.com/IBM-Cloud/vpc-api-samples/blob/master/Go/src/core/token.go)
 
+
 3. Get a list of the resources.
 
-    This section will show how to perform a GET API call on VPC APIs.
+    This section shows how to perform a GET API call on VPC APIs.
 
     Create the URL to be used to make GET rest API call.
 
     ```go
     url := RiasEndpoint + "/subnets" + RiasVersion
     ```
-
     This URL will get the list of subnets. Get other resources by using the appropriate endpoint.
+
 
     Create a new request given a method, above URL, and optional body.
 
     ```go
     req, err := http.NewRequest("GET", url, nil)
     ```
+
 
     Set the headers and IAM token.
 
@@ -126,6 +134,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
     req.Header.Add("Accept", "application/json")
     req.Header.Add("Authorization", IamToken)
     ```
+
 
     Request server and read the response.
 
@@ -137,8 +146,10 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
     fmt.Println("Response Body -", string(body))
     ```
 
+
 4. Post a resource.
-    First, define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
+
+    4-1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
 
       ```go
       // CreateSubnetTemplateInput - to create a request body
@@ -162,7 +173,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
     }
       ```
 
-      Second, define a struct for the response. The structure for response body is defined in API spec.
+      4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
 
       ```go
       // Subnet - Create a struct to mimic your json response structure
@@ -182,7 +193,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
     }
       ```
 
-    Here is how the POST call looks like.
+    The POST call is shown below.
 
     ```go
     // PostSubnet - request to create a subnet
@@ -243,7 +254,7 @@ Following this section, you will be able to call VPC APIs in your Go workspace.
 
 ## Python
 
-The following steps gives an example on how to retrieve a token, list all VPCs, and create a VPC.
+The the example below shows how to retrieve a token, list all VPCs, and create a VPC.
 
 1. Get an IAM access token using your API key.
 
@@ -284,7 +295,9 @@ except Exception as error:
     raise
 ```
 
-3. Get a list of all VPCs.
+
+
+2. Get a list of all VPCs.
 
 ```python
 import http.client
@@ -323,7 +336,7 @@ except Exception as error:
     raise
 ```
 
-4. Create a VPC.
+3. Create a VPC.
 
 ```python
 import http.client
