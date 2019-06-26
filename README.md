@@ -1,6 +1,6 @@
 # Getting Started
 
-This repository consists of a variety of code snippets intended to aid developer interaction with resources belonging to VPC on classic laaS Offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
+This repository consists of a variety of code snippets intended to aid developer interaction with resources belonging to VPC on Classic IaaS offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
 
 Examples are provided in the following languages:
 1. [Go](#go)
@@ -254,7 +254,7 @@ This section displays the process to call VPC APIs in a Go workspace.
 
 ## Python
 
-The the example below shows how to retrieve a token, list all VPCs, and create a VPC.
+The example below shows how to retrieve a token, list all VPCs, and create a VPC.
 
 1. Get an IAM access token using your API key.
 
