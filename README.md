@@ -321,7 +321,7 @@ payload = ""
 
 try:
     # Connect to rias endpoint for vpcs
-    conn.request("GET", "/v1/vpcs?version=" + version, payload, headers)
+    conn.request("GET", "/v1/vpcs?generation=1&version=" + version, payload, headers)
 
     # Get and read response data
     res = conn.getresponse()
@@ -361,7 +361,7 @@ payload = f'{{"name": "NAME_OF_VPC"}}'
 
 try:
     # Connect to rias endpoint for vpcs
-    conn.request("POST", "/v1/vpcs?version=" + version, payload, headers)
+    conn.request("POST", "/v1/vpcs?generation=1&version=" + version, payload, headers)
 
     # Get and read response data
     res = conn.getresponse()
