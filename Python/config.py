@@ -14,7 +14,7 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-01-01"
+version = "2019-06-01"
 
 def print_json(data):
     print(json.dumps(json.loads(data), indent=2, sort_keys=True))
