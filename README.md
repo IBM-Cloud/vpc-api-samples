@@ -46,7 +46,7 @@ This section displays the process to call VPC APIs in a Go workspace.
 
     ```go
     var IamToken string
-    const RiasVersion = "?version=2019-01-01&generation=1"
+    const RiasVersion = "?version=2019-06-01&generation=1"
     const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
     const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
     const APIKey = "Your API key here"
@@ -315,7 +315,7 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-01-01"
+version = "2019-06-01"
 
 payload = ""
 
@@ -354,7 +354,7 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-01-01"
+version = "2019-06-01"
 
 # Required payload for creating a VPC
 payload = f'{{"name": "NAME_OF_VPC"}}'
