@@ -59,12 +59,12 @@ This section displays the process to call VPC APIs in a Go workspace.
 
       ```go
       type Token struct {
-      AccessToken  string `json:"access_token"`
-      RefreshToken string `json:"refresh_token"`
-      TokenType    string `json:"token_type"`
-      ExpiresIn    int    `json:"expires_in"`
-      Expiration   int    `json:"expiration"`
-      Scope        string `json:"scope"`
+        AccessToken  string `json:"access_token"`
+        RefreshToken string `json:"refresh_token"`
+        TokenType    string `json:"token_type"`
+        ExpiresIn    int    `json:"expires_in"`
+        Expiration   int    `json:"expiration"`
+        Scope        string `json:"scope"`
       }
 
       ```
@@ -81,7 +81,7 @@ This section displays the process to call VPC APIs in a Go workspace.
       Make the request by passing the required endpoint and payload.
 
       ```go
-        req, err := http.NewRequest("POST", IAMEndpoint, payload)
+      req, err := http.NewRequest("POST", IAMEndpoint, payload)
       ```
 
       
@@ -151,47 +151,47 @@ This section displays the process to call VPC APIs in a Go workspace.
 
     4-1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
 
-      ```go
-      // CreateSubnetTemplateInput - to create a request body
+    ```go
+    // CreateSubnetTemplateInput - to create a request body
     type CreateSubnetTemplateInput struct {
-    Name          string          `json:"name"`
-    NetworkACL    *ResourceByID   `json:"network_acl,omitempty"`
-    PublicGateway *ResourceByID   `json:"public_gateway,omitempty"`
-    Vpc           *ResourceByID   `json:"vpc"`
-    Zone          *ResourceByName `json:"zone"`
-    Ipv4CidrBlock string          `json:"ipv4_cidr_block"`
+      Name          string          `json:"name"`
+      NetworkACL    *ResourceByID   `json:"network_acl,omitempty"`
+      PublicGateway *ResourceByID   `json:"public_gateway,omitempty"`
+      Vpc           *ResourceByID   `json:"vpc"`
+      Zone          *ResourceByName `json:"zone"`
+      Ipv4CidrBlock string          `json:"ipv4_cidr_block"`
     }
 
     // CreateSubnetCountOnlyTemplateInput - to create a request body
     type CreateSubnetCountOnlyTemplateInput struct {
-    Name                  string          `json:"name"`
-    NetworkACL            *ResourceByID   `json:"network_acl,omitempty"`
-    PublicGateway         *ResourceByID   `json:"public_gateway,omitempty"`
-    Vpc                   *ResourceByID   `json:"vpc"`
-    Zone                  *ResourceByName `json:"zone"`
-    TotalIpv4AddressCount int64           `json:"total_ipv4_address_count"`
+      Name                  string          `json:"name"`
+      NetworkACL            *ResourceByID   `json:"network_acl,omitempty"`
+      PublicGateway         *ResourceByID   `json:"public_gateway,omitempty"`
+      Vpc                   *ResourceByID   `json:"vpc"`
+      Zone                  *ResourceByName `json:"zone"`
+      TotalIpv4AddressCount int64           `json:"total_ipv4_address_count"`
     }
-      ```
+    ```
 
       4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
 
-      ```go
-      // Subnet - Create a struct to mimic your json response structure
+    ```go
+    // Subnet - Create a struct to mimic your json response structure
     type Subnet struct {
-    ID                        string     `json:"id"`
-    Name                      string     `json:"name"`
-    Href                      string     `json:"href"`
-    AvailableIpv4AddressCount int        `json:"available_ipv4_address_count"`
-    CreatedAt                 string     `json:"created_at"`
-    Ipv4CidrBlock             string     `json:"ipv4_cidr_block"`
-    NetworkACL                *Reference `json:"network_acl"`
-    PublicGateway             *Reference `json:"public_gateway,omitempty"`
-    Status                    string     `json:"status"`
-    TotalIpv4AddressCount     int        `json:"total_ipv4_address_count"`
-    Vpc                       *Reference `json:"vpc"`
-    Zone                      *Reference `json:"zone"`
+      ID                        string     `json:"id"`
+      Name                      string     `json:"name"`
+      Href                      string     `json:"href"`
+      AvailableIpv4AddressCount int        `json:"available_ipv4_address_count"`
+      CreatedAt                 string     `json:"created_at"`
+      Ipv4CidrBlock             string     `json:"ipv4_cidr_block"`
+      NetworkACL                *Reference `json:"network_acl"`
+      PublicGateway             *Reference `json:"public_gateway,omitempty"`
+      Status                    string     `json:"status"`
+      TotalIpv4AddressCount     int        `json:"total_ipv4_address_count"`
+      Vpc                       *Reference `json:"vpc"`
+      Zone                      *Reference `json:"zone"`
     }
-      ```
+    ```
 
     The POST call is shown below.
 
@@ -242,13 +242,13 @@ This section displays the process to call VPC APIs in a Go workspace.
     Calling `PostSubnet` function.
 
     ```go
-      vpcID := &core.ResourceByID{ID: "VPC_ID"}
-      zone := &core.ResourceByName{Name: "ZONE_ID"}
-      subnetCountOnly := &core.CreateSubnetCountOnlyTemplateInput{
-        Name: "SUBNET_NAME", Vpc: vpcID, Zone: zone,
-        TotalIpv4AddressCount: 8, //number of addresses
-      }
-      core.PostSubnet(subnetCountOnly)
+    vpcID := &core.ResourceByID{ID: "VPC_ID"}
+    zone := &core.ResourceByName{Name: "ZONE_ID"}
+    subnetCountOnly := &core.CreateSubnetCountOnlyTemplateInput{
+      Name: "SUBNET_NAME", Vpc: vpcID, Zone: zone,
+      TotalIpv4AddressCount: 8, //number of addresses
+    }
+    core.PostSubnet(subnetCountOnly)
     ```
 
 
