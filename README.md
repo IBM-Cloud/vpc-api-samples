@@ -146,7 +146,7 @@ This section displays the process to call VPC APIs in a Go workspace.
 
 4. Post a resource.
 
-    1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
+    4-1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
 
     ```go
     // CreateSubnetTemplateInput - to create a request body
@@ -170,7 +170,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     }
     ```
 
-      2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
+      4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
 
     ```go
     // Subnet - Create a struct to mimic your json response structure
