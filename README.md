@@ -2,11 +2,11 @@
 
 This repository consists of a variety of code snippets intended to aid developer interaction with resources belonging to VPC IaaS offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
 
-Examples are provided in the following languages:
+Examples are available in the following languages:
 1. [Go](#go)
 2. [Python](#python)
 
-Examples show the following steps:
+Examples break down into following steps:
 1. Retrieve API key for your account.
 2. Get an IAM access token using your api key.
 3. Get a list of the resources.
@@ -55,7 +55,7 @@ This section displays the process to call VPC APIs in a Go workspace.
 
 2. Get an IAM access token using your API key.
 
-    First, define a struct to hold token returned by API.
+      Define a struct to hold token returned by API.
 
       ```go
       type Token struct {
@@ -77,14 +77,12 @@ This section displays the process to call VPC APIs in a Go workspace.
       payload := strings.NewReader(strings.Join(payloadSlice, ""))
       ```
 
-      
       Make the request by passing the required endpoint and payload.
 
       ```go
       req, err := http.NewRequest("POST", IAMEndpoint, payload)
       ```
 
-      
       Set the headers.
 
       ```go
@@ -92,7 +90,6 @@ This section displays the process to call VPC APIs in a Go workspace.
       req.Header.Add("Accept", "application/json")
       ```
 
-      
       Request server and unmarshall the body in the `Token` type struct. Set the global variable.
 
       ```go
@@ -103,7 +100,7 @@ This section displays the process to call VPC APIs in a Go workspace.
       IamToken = token.TokenType + " " + token.AccessToken
       ```
 
-    
+
       Now, you should have the token stored in global variable `IamToken`.
       Refer to the code [here.](https://github.com/IBM-Cloud/vpc-api-samples/blob/master/Go/src/core/token.go)
 
@@ -149,7 +146,7 @@ This section displays the process to call VPC APIs in a Go workspace.
 
 4. Post a resource.
 
-    4-1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
+    1. Define a struct for the input. Subnet POST API accepts two kinds of request body defined by the following structs.
 
     ```go
     // CreateSubnetTemplateInput - to create a request body
@@ -173,7 +170,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     }
     ```
 
-      4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
+      2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
 
     ```go
     // Subnet - Create a struct to mimic your json response structure
@@ -366,7 +363,7 @@ try:
     # Get and read response data
     res = conn.getresponse()
     data = res.read()
-    
+
     # Print and return response data
     print_json(data.decode("utf-8"))
     return data.decode("utf-8")
