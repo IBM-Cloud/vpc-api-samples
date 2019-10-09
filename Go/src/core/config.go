@@ -5,7 +5,7 @@ var IamToken string
 
 // RiasVersion - rias api version
 // generation - 1 is GC and 2 is NG
-const RiasVersion = "?version=2019-06-01&generation=1"
+const RiasVersion = "?version=2019-09-24&generation=1"
 
 // RiasEndpoint - rias endpoint prod
 // endpoint for different regions would be
