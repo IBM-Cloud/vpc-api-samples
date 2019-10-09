@@ -1,6 +1,6 @@
 package main
 
-import "core"
+import "github.com/vpc-api-samples/Go/src/core"
 
 func main() {
 	core.RetrieveToken(core.APIKey)
