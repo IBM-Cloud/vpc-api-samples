@@ -46,8 +46,8 @@ This section displays the process to call VPC APIs in a Go workspace.
 
     ```go
     var IamToken string
-    const RiasVersion = "2019-06-01"
-    const Generation = 2
+    const RiasVersion = "2019-09-24"
+    const Generation = "2"
     const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
     const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
     const APIKey = "Your API key here"
