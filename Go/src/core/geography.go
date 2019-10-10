@@ -10,7 +10,7 @@ import (
 // GetRegions - request to get the list of regions
 func GetRegions() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/regions" + RiasVersion
+	url := RiasEndpoint + "/regions" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -44,7 +44,7 @@ func GetRegions() {
 // GetZones - request to get the list of regions
 func GetZones(regionName string) {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + `/regions/` + regionName + `/zones` + RiasVersion
+	url := RiasEndpoint + `/regions/` + regionName + `/zones` + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)

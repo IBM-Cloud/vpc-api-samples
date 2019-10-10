@@ -35,10 +35,15 @@ Examples break down into following steps:
 | Load Balancers    | /load_balancers       |
 | SSH keys          | /keys                 |
 
+
+*VPC API Version*
+
+Refer to the [VPC on Classic Release Notes](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-release-notes) document to find out latest version release.
+
+
 ## Go
 
 This section displays the process to call VPC APIs in a Go workspace.
-
 
 
 1. Set up global/account variables.
@@ -46,10 +51,12 @@ This section displays the process to call VPC APIs in a Go workspace.
 
     ```go
     var IamToken string
-    const RiasVersion = "?version=2019-06-01&generation=1"
+    const RiasVersion = "2019-09-24"
+    const Generation = "1"
     const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
     const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
     const APIKey = "Your API key here"
+    const QueryParams = `?version=` + RiasVersion + `&generation=` + Generation
     ```
 
 
@@ -112,7 +119,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     Create the URL to be used to make GET rest API call.
 
     ```go
-    url := RiasEndpoint + "/subnets" + RiasVersion
+    url := RiasEndpoint + "/subnets" + QueryParams
     ```
     This URL will get the list of subnets. Get other resources by using the appropriate endpoint.
 
@@ -201,7 +208,7 @@ This section displays the process to call VPC APIs in a Go workspace.
         log.Fatal(err)
       }
       // Create URL adding endpoint, path to the resource and query parameters
-      url := RiasEndpoint + "/subnets" + RiasVersion
+      url := RiasEndpoint + "/subnets" + QueryParams
 
       // Create a new request given a method, URL, and optional body.
       req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -312,7 +319,7 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-06-01"
+version = "2019-09-24"
 
 payload = ""
 
@@ -351,7 +358,7 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-06-01"
+version = "2019-09-24"
 
 # Required payload for creating a VPC
 payload = f'{{"name": "NAME_OF_VPC"}}'

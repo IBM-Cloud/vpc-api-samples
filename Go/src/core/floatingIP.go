@@ -59,7 +59,7 @@ func PostReserveFloatingIP(fip *CreateFloatingIPInput) {
 	payload, _ := json.Marshal(fip)
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/floating_ips" + RiasVersion
+	url := RiasEndpoint + "/floating_ips" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))

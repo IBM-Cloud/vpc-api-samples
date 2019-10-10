@@ -12,7 +12,7 @@ import (
 // GetSSHKeys - request to get the list of ssh keys
 func GetSSHKeys() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/keys" + RiasVersion
+	url := RiasEndpoint + "/keys" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
@@ -56,7 +56,7 @@ func PostSSHKey(sskKeyInput *CreateSSHKeyInput) {
 	}
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/keys" + RiasVersion
+	url := RiasEndpoint + "/keys" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))

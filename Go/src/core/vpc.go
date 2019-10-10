@@ -12,7 +12,7 @@ import (
 // GetVPCs - request to get the list of vpcs
 func GetVPCs() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/vpcs" + RiasVersion
+	url := RiasEndpoint + "/vpcs" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -59,7 +59,7 @@ func PostVPC(vpcInput *CreateVPCInput) {
 		log.Fatal(err)
 	}
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/vpcs" + RiasVersion
+	url := RiasEndpoint + "/vpcs" + QueryParams
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
 	if err != nil {
 		log.Fatal(err)
