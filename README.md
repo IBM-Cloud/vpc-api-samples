@@ -46,12 +46,13 @@ This section displays the process to call VPC APIs in a Go workspace.
 
     ```go
     var IamToken string
-    const RiasVersion = "?version=2019-06-01&generation=1"
+    const RiasVersion = "2019-06-01"
+    const Generation = 2
     const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
     const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
     const APIKey = "Your API key here"
+    const QueryParams = `?version=` + RiasVersion + `&generation=` + Generation
     ```
-
 
 2. Get an IAM access token using your API key.
 
@@ -112,7 +113,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     Create the URL to be used to make GET rest API call.
 
     ```go
-    url := RiasEndpoint + "/subnets" + RiasVersion
+    url := RiasEndpoint + "/subnets" + QueryParams
     ```
     This URL will get the list of subnets. Get other resources by using the appropriate endpoint.
 
@@ -170,7 +171,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     }
     ```
 
-      4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc-on-classic).
+      4-2. Define a struct for the response. The structure for response body is defined in API [spec](https://cloud.ibm.com/apidocs/vpc).
 
     ```go
     // Subnet - Create a struct to mimic your json response structure
@@ -201,7 +202,7 @@ This section displays the process to call VPC APIs in a Go workspace.
         log.Fatal(err)
       }
       // Create URL adding endpoint, path to the resource and query parameters
-      url := RiasEndpoint + "/subnets" + RiasVersion
+      url := RiasEndpoint + "/subnets" + QueryParams
 
       // Create a new request given a method, URL, and optional body.
       req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -312,13 +313,13 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-06-01"
+version = "2019-09-24"
 
 payload = ""
 
 try:
     # Connect to rias endpoint for vpcs
-    conn.request("GET", "/v1/vpcs?generation=1&version=" + version, payload, headers)
+    conn.request("GET", "/v1/vpcs?generation=2&version=" + version, payload, headers)
 
     # Get and read response data
     res = conn.getresponse()
@@ -351,14 +352,14 @@ headers = {
     'cache-control': 'no-cache'
 }
 
-version = "2019-06-01"
+version = "2019-09-24"
 
 # Required payload for creating a VPC
 payload = f'{{"name": "NAME_OF_VPC"}}'
 
 try:
     # Connect to rias endpoint for vpcs
-    conn.request("POST", "/v1/vpcs?generation=1&version=" + version, payload, headers)
+    conn.request("POST", "/v1/vpcs?generation=2&version=" + version, payload, headers)
 
     # Get and read response data
     res = conn.getresponse()
@@ -375,7 +376,7 @@ except Exception as error:
 ```
 
 ## API Spec
-[IBM Cloud VPC API](https://cloud.ibm.com/apidocs/vpc-on-classic)
+[IBM Cloud VPC API](https://cloud.ibm.com/apidocs/vpc)
 
 ## Documentation
-[IBM Cloud Virtual Private Cloud](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-getting-started)
+[IBM Cloud Virtual Private Cloud](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started)

@@ -5,6 +5,10 @@ import "github.com/vpc-api-samples/Go/src/core"
 func main() {
 	core.RetrieveToken(core.APIKey)
 
+	// Regions and Zones
+	core.GetRegions()
+	core.GetZones("us-south")
+
 	// VPC
 	core.GetVPCs()
 	vpcInput := &core.CreateVPCInput{Name: "VPC_NAME", DefaultACL: &core.ResourceByID{ID: "ACL_ID"}}

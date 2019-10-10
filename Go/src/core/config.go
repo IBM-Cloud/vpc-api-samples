@@ -3,10 +3,6 @@ package core
 // IamToken - variable holds iam token
 var IamToken string
 
-// RiasVersion - rias api version
-// generation - 1 is GC and 2 is NG
-const RiasVersion = "?version=2019-06-01&generation=1"
-
 // RiasEndpoint - rias endpoint prod
 // endpoint for different regions would be
 // https://{{region}}.iaas.cloud.ibm.com/v1" where region is the region you are referring to.
@@ -17,3 +13,12 @@ const APIKey = "Your API key here"
 
 // IAMEndpoint - prod
 const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
+
+// RiasVersion - rias api version
+const RiasVersion = "2019-09-24"
+
+// Generation - 1 is VPC on Classic and 2 is VPC
+const Generation = "2"
+
+// QueryParams -
+const QueryParams = `?version=` + RiasVersion + `&generation=` + Generation

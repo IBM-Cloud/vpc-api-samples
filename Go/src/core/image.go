@@ -11,7 +11,7 @@ import (
 func GetImages() {
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/images" + RiasVersion
+	url := RiasEndpoint + "/images" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)

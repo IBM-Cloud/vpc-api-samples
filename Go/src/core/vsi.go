@@ -12,7 +12,7 @@ import (
 // GetVSIs - request to get the list of security groups
 func GetVSIs() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/instances" + RiasVersion
+	url := RiasEndpoint + "/instances" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
@@ -70,7 +70,7 @@ func PostVSI(vsi *CreateVSIInput) {
 	}
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/instances" + RiasVersion
+	url := RiasEndpoint + "/instances" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
