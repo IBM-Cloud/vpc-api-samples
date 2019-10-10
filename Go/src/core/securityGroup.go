@@ -12,7 +12,7 @@ import (
 // GetSecurityGroups - request to get the list of security groups
 func GetSecurityGroups() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/security_groups" + RiasVersion
+	url := RiasEndpoint + "/security_groups" + QueryParams
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -67,7 +67,7 @@ func PostSecurityGroup(sg *CreateSecurityGroupInput) {
 		log.Fatal(err)
 	}
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/security_groups" + RiasVersion
+	url := RiasEndpoint + "/security_groups" + QueryParams
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
 	if err != nil {

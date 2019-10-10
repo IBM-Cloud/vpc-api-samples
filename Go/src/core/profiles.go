@@ -11,7 +11,7 @@ import (
 func GetProfiles() {
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/instance/profiles" + RiasVersion
+	url := RiasEndpoint + "/instance/profiles" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
