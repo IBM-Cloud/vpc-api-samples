@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started with VPC on Classic
 
 This repository consists of a variety of code snippets intended to aid developer interaction with resources belonging to VPC IaaS offering. This repository is intended to be used for documentation purposes only and not to be included as a dependency.
 
@@ -382,7 +382,7 @@ except Exception as error:
 ```
 
 ## API Spec
-[IBM Cloud VPC API](https://cloud.ibm.com/apidocs/vpc-on-classic)
+[IBM Cloud VPC on Classic API](https://cloud.ibm.com/apidocs/vpc-on-classic)
 
 ## Documentation
 [IBM Cloud Virtual Private Cloud](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-getting-started)
