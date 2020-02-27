@@ -45,7 +45,7 @@ This section displays the process to call VPC APIs in a Go workspace.
   Set up following global variables in your workspace
 
     ```go
-    var IamToken string
+    var Iam_token string
     const API_version = "2019-09-24"
     const Generation = "2"
     const VPC_api_endpoint = "https://us-south.iaas.cloud.ibm.com/v1"
@@ -98,11 +98,11 @@ This section displays the process to call VPC APIs in a Go workspace.
       body, err := ioutil.ReadAll(res.Body)
       var token Token
       json.Unmarshal([]byte(body), &token)
-      IamToken = token.TokenType + " " + token.AccessToken
+      Iam_token = token.TokenType + " " + token.AccessToken
       ```
 
 
-      Now, you should have the token stored in global variable `IamToken`.
+      Now, you should have the token stored in global variable `Iam_token`.
       Refer to the code [here.](https://github.com/IBM-Cloud/vpc-api-samples/blob/master/Go/src/core/token.go)
 
 
@@ -130,7 +130,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     ```go
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", IamToken)
+    req.Header.Add("Authorization", Iam_token)
     ```
 
 
@@ -213,7 +213,7 @@ This section displays the process to call VPC APIs in a Go workspace.
       // Adding headers to request
       req.Header.Add("Content-Type", "application/json")
       req.Header.Add("Accept", "application/json")
-      req.Header.Add("Authorization", IamToken)
+      req.Header.Add("Authorization", Iam_token)
 
       // Requesting server
       res, err := http.DefaultClient.Do(req)

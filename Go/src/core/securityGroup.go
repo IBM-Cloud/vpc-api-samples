@@ -12,14 +12,14 @@ import (
 // GetSecurityGroups - request to get the list of security groups
 func GetSecurityGroups() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/security_groups" + QueryParams
+	url := VPC_api_endpoint + "/security_groups" + QueryParams
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
 
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -67,7 +67,7 @@ func PostSecurityGroup(sg *CreateSecurityGroupInput) {
 		log.Fatal(err)
 	}
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/security_groups" + QueryParams
+	url := VPC_api_endpoint + "/security_groups" + QueryParams
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
 	if err != nil {
@@ -76,7 +76,7 @@ func PostSecurityGroup(sg *CreateSecurityGroupInput) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {

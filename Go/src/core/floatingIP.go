@@ -13,7 +13,7 @@ import (
 func GetFloatingIPs() {
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/floating_ips" + QueryParams
+	url := VPC_api_endpoint + "/floating_ips" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -26,7 +26,7 @@ func GetFloatingIPs() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -59,7 +59,7 @@ func PostReserveFloatingIP(fip *CreateFloatingIPInput) {
 	payload, _ := json.Marshal(fip)
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/floating_ips" + QueryParams
+	url := VPC_api_endpoint + "/floating_ips" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -70,7 +70,7 @@ func PostReserveFloatingIP(fip *CreateFloatingIPInput) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
