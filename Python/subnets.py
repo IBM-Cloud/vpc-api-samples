@@ -9,7 +9,7 @@ def fetch_subnets():
     payload = ""
 
     try:
-        # Connect to rias endpoint for subnets
+        # Connect to api endpoint for subnets
         conn.request("GET", "/v1/subnets?version=" + version, payload, headers)
 
         # Get and read response data
@@ -51,13 +51,13 @@ def create_subnet(name, vpc_id, total_ipv4_address_count, zone):
     '''
 
     try:
-        # Connect to rias endpoint for subnets
+        # Connect to api endpoint for subnets
         conn.request("POST", "/v1/subnets?version=" + version, payload, headers)
 
         # Get and read response data
         res = conn.getresponse()
         data = res.read()
-        
+
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")

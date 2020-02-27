@@ -10,7 +10,7 @@ import (
 // GetRegions - request to get the list of regions
 func GetRegions() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/regions" + QueryParams
+	url := VPC_api_endpoint + "/regions" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -21,7 +21,7 @@ func GetRegions() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -44,7 +44,7 @@ func GetRegions() {
 // GetZones - request to get the list of regions
 func GetZones(regionName string) {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + `/regions/` + regionName + `/zones` + QueryParams
+	url := VPC_api_endpoint + `/regions/` + regionName + `/zones` + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -55,7 +55,7 @@ func GetZones(regionName string) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)

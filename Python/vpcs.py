@@ -10,7 +10,7 @@ def fetch_vpcs():
     payload = ""
 
     try:
-        # Connect to rias endpoint for vpcs
+        # Connect to api endpoint for vpcs
         conn.request("GET", "/v1/vpcs?version=" + version, payload, headers)
 
         # Get and read response data
@@ -32,18 +32,18 @@ def fetch_vpcs():
 # Params:
 #   name: string (required)
 def create_vpc(name):
-    
+
     # Required payload for creating a VPC
     payload = f'{{"name": "{name}"}}'
 
     try:
-        # Connect to rias endpoint for vpcs
+        # Connect to api endpoint for vpcs
         conn.request("POST", "/v1/vpcs?version=" + version, payload, headers)
 
         # Get and read response data
         res = conn.getresponse()
         data = res.read()
-        
+
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")

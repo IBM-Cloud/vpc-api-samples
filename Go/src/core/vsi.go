@@ -12,7 +12,7 @@ import (
 // GetVSIs - request to get the list of security groups
 func GetVSIs() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/instances" + QueryParams
+	url := VPC_api_endpoint + "/instances" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
@@ -20,7 +20,7 @@ func GetVSIs() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -70,7 +70,7 @@ func PostVSI(vsi *CreateVSIInput) {
 	}
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/instances" + QueryParams
+	url := VPC_api_endpoint + "/instances" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -81,7 +81,7 @@ func PostVSI(vsi *CreateVSIInput) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)

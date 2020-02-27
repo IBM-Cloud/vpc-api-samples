@@ -25,7 +25,7 @@ func RetrieveToken(apikey string) {
 	payload := strings.NewReader(strings.Join(payloadSlice, ""))
 
 	// Create a new request given a method, URL, and optional body.
-	req, err := http.NewRequest("POST", IAMEndpoint, payload)
+	req, err := http.NewRequest("POST", IAM_endpoint, payload)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,5 +52,5 @@ func RetrieveToken(apikey string) {
 	var token Token
 	json.Unmarshal([]byte(body), &token)
 	// saving the token
-	IamToken = token.TokenType + " " + token.AccessToken
+	Iam_token = token.TokenType + " " + token.AccessToken
 }

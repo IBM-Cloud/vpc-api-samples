@@ -11,7 +11,7 @@ import (
 func GetImages() {
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/images" + QueryParams
+	url := VPC_api_endpoint + "/images" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -24,7 +24,7 @@ func GetImages() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)

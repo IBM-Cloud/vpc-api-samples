@@ -3,7 +3,7 @@ package main
 import "github.com/vpc-api-samples/Go/src/core"
 
 func main() {
-	core.RetrieveToken(core.APIKey)
+	core.RetrieveToken(core.API_key)
 
 	// Regions
 	core.GetRegions()
