@@ -45,13 +45,13 @@ This section displays the process to call VPC APIs in a Go workspace.
   Set up following global variables in your workspace
 
     ```go
-    var IamToken string
-    const RiasVersion = "2019-09-24"
+    var Iam_token string
+    const API_version = "2019-09-24"
     const Generation = "2"
-    const RiasEndpoint = "https://us-south.iaas.cloud.ibm.com/v1"
-    const IAMEndpoint = "https://iam.cloud.ibm.com/identity/token"
-    const APIKey = "Your API key here"
-    const QueryParams = `?version=` + RiasVersion + `&generation=` + Generation
+    const VPC_api_endpoint = "https://us-south.iaas.cloud.ibm.com/v1"
+    const IAM_endpoint = "https://iam.cloud.ibm.com/identity/token"
+    const API_key = "Your API key here"
+    const QueryParams = `?version=` + API_version + `&generation=` + Generation
     ```
 
 2. Get an IAM access token using your API key.
@@ -98,11 +98,11 @@ This section displays the process to call VPC APIs in a Go workspace.
       body, err := ioutil.ReadAll(res.Body)
       var token Token
       json.Unmarshal([]byte(body), &token)
-      IamToken = token.TokenType + " " + token.AccessToken
+      Iam_token = token.TokenType + " " + token.AccessToken
       ```
 
 
-      Now, you should have the token stored in global variable `IamToken`.
+      Now, you should have the token stored in global variable `Iam_token`.
       Refer to the code [here.](https://github.com/IBM-Cloud/vpc-api-samples/blob/master/Go/src/core/token.go)
 
 
@@ -113,7 +113,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     Create the URL to be used to make GET rest API call.
 
     ```go
-    url := RiasEndpoint + "/subnets" + QueryParams
+    url := VPC_api_endpoint + "/subnets" + QueryParams
     ```
     This URL will get the list of subnets. Get other resources by using the appropriate endpoint.
 
@@ -130,7 +130,7 @@ This section displays the process to call VPC APIs in a Go workspace.
     ```go
     req.Header.Add("Content-Type", "application/json")
     req.Header.Add("Accept", "application/json")
-    req.Header.Add("Authorization", IamToken)
+    req.Header.Add("Authorization", Iam_token)
     ```
 
 
@@ -202,7 +202,7 @@ This section displays the process to call VPC APIs in a Go workspace.
         log.Fatal(err)
       }
       // Create URL adding endpoint, path to the resource and query parameters
-      url := RiasEndpoint + "/subnets" + QueryParams
+      url := VPC_api_endpoint + "/subnets" + QueryParams
 
       // Create a new request given a method, URL, and optional body.
       req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -213,7 +213,7 @@ This section displays the process to call VPC APIs in a Go workspace.
       // Adding headers to request
       req.Header.Add("Content-Type", "application/json")
       req.Header.Add("Accept", "application/json")
-      req.Header.Add("Authorization", IamToken)
+      req.Header.Add("Authorization", Iam_token)
 
       // Requesting server
       res, err := http.DefaultClient.Do(req)
@@ -318,7 +318,7 @@ version = "2019-09-24"
 payload = ""
 
 try:
-    # Connect to rias endpoint for vpcs
+    # Connect to api endpoint for vpcs
     conn.request("GET", "/v1/vpcs?generation=2&version=" + version, payload, headers)
 
     # Get and read response data
@@ -358,7 +358,7 @@ version = "2019-09-24"
 payload = f'{{"name": "NAME_OF_VPC"}}'
 
 try:
-    # Connect to rias endpoint for vpcs
+    # Connect to api endpoint for vpcs
     conn.request("POST", "/v1/vpcs?generation=2&version=" + version, payload, headers)
 
     # Get and read response data

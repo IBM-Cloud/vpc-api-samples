@@ -10,7 +10,7 @@ def fetch_instances():
     payload = ""
 
     try:
-        # Connect to rias endpoint for instances
+        # Connect to api endpoint for instances
         conn.request("GET", "/v1/instances?version=" + version, payload, headers)
 
         # Get and read response data
@@ -20,7 +20,7 @@ def fetch_instances():
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")
-    
+
     # If an error happens while fetching instances
     except Exception as error:
         print(f"Error fetching instances. {error}")
@@ -84,17 +84,17 @@ def create_instance(image, name, profile, key_id, port_speed, subnet_id, vpc_id,
     '''
 
     try:
-        # Connect to rias endpoint for instances
+        # Connect to api endpoint for instances
         conn.request("POST", "/v1/instances?version=" + version, payload, headers)
 
         # Get and read response data
         res = conn.getresponse()
         data = res.read()
-        
+
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")
-    
+
     # If an error happens while creating an instance
     except Exception as error:
         print(f"Error creating instance. {error}")

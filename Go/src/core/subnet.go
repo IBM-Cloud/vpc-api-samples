@@ -13,7 +13,7 @@ import (
 func GetSubnets() {
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/subnets" + QueryParams
+	url := VPC_api_endpoint + "/subnets" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("GET", url, nil)
@@ -26,7 +26,7 @@ func GetSubnets() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -90,7 +90,7 @@ func PostSubnet(subnetInput interface{}) {
 		log.Fatal(err)
 	}
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/subnets" + QueryParams
+	url := VPC_api_endpoint + "/subnets" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -101,7 +101,7 @@ func PostSubnet(subnetInput interface{}) {
 	// Adding headers to request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)

@@ -12,7 +12,7 @@ import (
 // GetSSHKeys - request to get the list of ssh keys
 func GetSSHKeys() {
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/keys" + QueryParams
+	url := VPC_api_endpoint + "/keys" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, _ := http.NewRequest("GET", url, nil)
@@ -20,7 +20,7 @@ func GetSSHKeys() {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Requesting server
 	res, err := http.DefaultClient.Do(req)
@@ -56,7 +56,7 @@ func PostSSHKey(sskKeyInput *CreateSSHKeyInput) {
 	}
 
 	// Create URL adding endpoint, path to the resource and query parameters
-	url := RiasEndpoint + "/keys" + QueryParams
+	url := VPC_api_endpoint + "/keys" + QueryParams
 
 	// Create a new request given a method, URL, and optional body.
 	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
@@ -67,7 +67,7 @@ func PostSSHKey(sskKeyInput *CreateSSHKeyInput) {
 	// Adding headers to the request
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", IamToken)
+	req.Header.Add("Authorization", Iam_token)
 
 	// Reading response
 	res, err := http.DefaultClient.Do(req)
