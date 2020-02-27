@@ -10,7 +10,7 @@ def fetch_profiles():
     payload = ""
 
     try:
-        # Connect to rias endpoint for profiles
+        # Connect to api endpoint for profiles
         conn.request("GET", "/v1/instance/profiles?version=" + version, payload, headers)
 
         # Get and read response data

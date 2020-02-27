@@ -10,7 +10,7 @@ def fetch_ssk_keys():
     payload = ""
 
     try:
-        # Connect to rias endpoint for ssh keys
+        # Connect to api endpoint for ssh keys
         conn.request("GET", "/v1/keys?version=" + version, payload, headers)
 
         # Get and read response data
@@ -34,7 +34,7 @@ def fetch_ssk_keys():
 #   public_key: str (required)
 #   rsa: str
 def createSSHKey(name, public_key, key_type):
-    
+
     # Required payload for creating an ssh key
     payload = f'''
         {{
@@ -45,13 +45,13 @@ def createSSHKey(name, public_key, key_type):
     '''
 
     try:
-        # Connect to rias endpoint for ssh keys
+        # Connect to api endpoint for ssh keys
         conn.request("POST", "/v1/keys?version=" + version, payload, headers)
 
         # Get and read response data
         res = conn.getresponse()
         data = res.read()
-        
+
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")

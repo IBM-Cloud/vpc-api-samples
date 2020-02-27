@@ -10,7 +10,7 @@ def fetch_security_groups():
     payload = ""
 
     try:
-        # Connect to rias endpoint for security groups
+        # Connect to api endpoint for security groups
         conn.request("GET", "/v1/security_groups?version=" + version, payload, headers)
 
         # Get and read response data
@@ -53,17 +53,17 @@ def create_security_group(name, protocol, direction, vpc_id):
     '''
 
     try:
-        # Connect to rias endpoint for creating a security group
+        # Connect to api endpoint for creating a security group
         conn.request("POST", "/v1/security_groups?version=" + version, payload, headers)
 
         # Get and read response data
         res = conn.getresponse()
         data = res.read()
-        
+
         # Print and return response data
         print_json(data.decode("utf-8"))
         return data.decode("utf-8")
-    
+
     # If an error happens while creating a security group
     except Exception as error:
         print(f"Error creating a security group. {error}")

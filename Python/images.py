@@ -10,7 +10,7 @@ def fetch_images():
     payload = ""
 
     try:
-        # Connect to rias endpoint for images
+        # Connect to api endpoint for images
         conn.request("GET", "/v1/images?version=" + version, payload, headers)
 
         # Get and read response data
